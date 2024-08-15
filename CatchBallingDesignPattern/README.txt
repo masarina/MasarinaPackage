@@ -1,0 +1,39 @@
+
+
+野生プログラマです。
+邪道だらけですがよろしくお願いします。
+Made by Masarina
+
+==== このデザインパターンについて ===================================================
+
+☆ Playerを追加したい場合
+
+以下のフォーマットでPlayerを作成してください。
+
+
+プレイヤーの名前.py
+「
+from SuperPlayer import SuperPlayer 
+
+class プレイヤーの名前(SuperPlayer):
+    def __init__(self):
+        self.my_name = "FinalPlayer"
+
+    def main(self):
+	
+	# 任意の処理
+
+	# 処理が完了したら、戻り値に必ず "Completed" を返してください。
+	
+	# なお、非同期関数などもこのmainに実行しても構いません。その場合、非同期関数が求める結果になったなら "Completed"と返し、それ以外の場合は None を返してください。
+
+        return "Completed"
+
+」
+
+このPlayerはBallObject.pyと同じディレクトリ層においてください。
+
+
+
+Playerの作成が完了したら、Playerを設定する必要があります。
+

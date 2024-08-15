@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d80e434eeabaeaf48b76790d39b7156c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _udonSharpBackingUdonBehaviour: {instanceID: 0}
+  - qrCodeTexture: {fileID: 2800000, guid: fa4469c7f437b5144a04f9258f9c0ce0, type: 3}
+  - targetMaterial: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
