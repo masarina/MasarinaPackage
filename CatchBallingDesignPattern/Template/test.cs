@@ -1,47 +1,38 @@
-﻿
+
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-public class test : UdonSharpBehaviour
+
+public class InputPlayer : SuperPlayer
 {
-    void Start()
+
+    // 初期化
+    public string playerNane = "InputPlayer";
+
+
+    public bool InputPlayerReset()
     {
-        
+        myName = playerNane;
+
+        return true;
     }
 
-    void TestDo()
+
+    public override string ReturnMyName()
     {
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
-        Debug.LogError("実行されています。");
+        return playerNane;
     }
+
+
+    public override string ExecuteMain()
+    {
+        Debug.Log($"\n==== {playerNane} ExecuteMain ==============================");
+
+        Debug.Log($"\n==== {playerNane} ExecuteMain (END) ==============================\n");
+
+        return "Completed";
+    }
+
 }
