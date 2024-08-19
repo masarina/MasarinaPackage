@@ -3,10 +3,23 @@ using UnityEngine;
 
 public class World : UdonSharpBehaviour
 {
+
+    // 【README】
+    // 下記のように追加してください
+    // ============================================================
+    //     public NewPlayerName newPlayerName;
+    // ============================================================
     public BallObject ball;
     public FirstPlayer firstPlayer;
     public FinalPlayer finalPlayer;
     public DebugPlayer debugPlayer;
+    public InputAndPrintPlayerDir inputAndPrintPlayerDir;
+
+    // 【README】
+    // 下記のように追加してください
+    // ============================================================
+    //     private bool NewPlayerNameResetResult;
+    // ============================================================
     private bool BallResetResult;
     private bool FirstPlayerResetResult;
     private bool FinalPlayerResetResult;
@@ -14,16 +27,23 @@ public class World : UdonSharpBehaviour
     private bool ScheduleModeSettingsResult;
     private bool ResetScheduleStatusResult;
     private bool CatchBallResult;
+    private bool InputAndPrintPlayerDirResult;
 
 
 
     public bool WorldReset()
     {
+        // 【README】
+        // 下記のように追加してください
+        // ========================================================
+        // NewPlayerNameResetResult = newPlayerNameReset.NewPlayerNameReset();
+        // ========================================================
         // 各Layerのリセット
         BallResetResult = ball.BallReset();
         FinalPlayerResetResult = firstPlayer.FirstPlayerReset();
         FinalPlayerResetResult = finalPlayer.FinalPlayerReset();
         DebugPlayerResetResult = debugPlayer.DebugPlayerReset();
+        InputAndPrintPlayerDirResult = inputAndPrintPlayerDir.InputAndPrintPlayerDirResult();
 
         return true;
     }
@@ -132,6 +152,7 @@ public class World : UdonSharpBehaviour
         string beforePlayerStatus, // ひとつ前のプレイヤーステータス（自信を実行するべきかの判断に使用する変数）
         string playerName // 
     )
+
     {
         string result = "0";
 
@@ -144,6 +165,15 @@ public class World : UdonSharpBehaviour
             else
             {
 
+                // 【README】
+                // 下記のように書き込み追加してください。
+                // (!大文字小文字注意!)
+                // ====================================
+                // else if (playerName == "NewPlayerName")
+                // {
+                //     result = newPlayerName.ExecuteMain();
+                // }
+                // ====================================
                 if (playerName == "FirstPlayer")
                 {
                     result = firstPlayer.ExecuteMain();
@@ -156,12 +186,17 @@ public class World : UdonSharpBehaviour
                 {
                     result = finalPlayer.ExecuteMain();
                 }
+                else if (playerName == "InputAndPrintPlayerDir")
+                {
+                    result = inputAndPrintPlayerDir.ExecuteMain();
+                }
+
+                // 他のプレイヤーもここに追加
 
                 else
                 {
                     Debug.LogError($"「{playerName}」というプレイヤーは存在しません。");
                 }
-                // 他のプレイヤーもここに追加
             }
         }
 
@@ -187,8 +222,20 @@ public class World : UdonSharpBehaviour
     // 引数:playerName
     // 処理:playerNameのCatchBallを実行
     // 戻値:なし
-    {
 
+    // 【README】
+    // 下記のように追加してください。
+    // (!大文字小文字注意!)
+    // ================================================================
+    // else if (playerName == "newPlayerName")
+    // // newPlayerNameのCatchBallを実行
+    // {
+    //     CatchBallResult = newPlayerName.CatchBall(world);
+    // }
+    // ================================================================
+
+
+    {
 
         if (playerName == "FirstPlayer")
         // FirstPlayerのCatchBallを実行
@@ -204,10 +251,17 @@ public class World : UdonSharpBehaviour
 
         else if (playerName == "FinalPlayer")
         // FinalPlayerのCatchBallを実行
-        // FinalPlayerの次が実行されてしまっている（2024年8月15日）
         {
             CatchBallResult = finalPlayer.CatchBall(world);
         }
+
+        else if (playerName == "InputAndPrintPlayerDir")
+        // InputAndPrintPlayerDirのCatchBallを実行
+        {
+            CatchBallResult = inputAndPrintPlayerDir.CatchBall(world);
+        }
+
+
         // 他のプレイヤーもここに追加
 
         return true;
