@@ -10,6 +10,7 @@ public class BallObject : UdonSharpBehaviour
     public string scheduleMode;
     public int indexOfSchedule;
     public int indexOfScheduleOfSchedule;
+    public string inputText; // 入力される文字列の箱(inputPlayerで使用)
     
     public RinaNumpy rinaNumpy;
 
@@ -32,7 +33,12 @@ public class BallObject : UdonSharpBehaviour
 
     public bool ScheduleModeSettings()
     {
-        // scheduleMode = "sample_mode"; デバッグ
+        // 【README】
+        // スケジュールの切り替え条件です。
+        //
+        // このメソッドはスケジュールが一つ終わった時点で呼び出されますので。
+        // その時点での好ましいコーディングをしてください。
+        //
 
         if (scheduleMode == "sample_mode")
         {
@@ -63,6 +69,10 @@ public class BallObject : UdonSharpBehaviour
 
     public bool ScheduleDict(string modeName)
     {
+        // 【README】
+        // スケジュールは複数作成することができます。
+        // どのPlayerの次に何のPlayerを実行するかという概念の元、実装してください。
+
         string[][] array2d = null;
 
         if (modeName == "sample_mode")
@@ -70,7 +80,8 @@ public class BallObject : UdonSharpBehaviour
             array2d = new string[][]
             {
                 new string[] { "FirstPlayer" },
-                new string[] { "DebugPlayer", "FinalPlayer" }
+                new string[] { "InputAndPrintPlayerDir" },
+                new string[] { "FinalPlayer" }
             };
         }
         else if (modeName == "sample2_mode")
@@ -78,7 +89,6 @@ public class BallObject : UdonSharpBehaviour
             array2d = new string[][]
             {
                 new string[] { "FirstPlayer", "DebugPlayer" },
-                new string[] { "DebugPlayer", "DebugPlayer" },
                 new string[] { "DebugPlayer", "DebugPlayer", "FinalPlayer" }
             };
         }
