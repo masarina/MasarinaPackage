@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: test
+  m_Name: TemplatePlayer
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: eb13a5629abbfa847ae60fadb082c75b,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 97da2961adaaf9a4d9fa38d5a6146e97,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: ccb9346168861f346a78b40d99848b35, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 5c1c035f7476fce4eac8c65d5c22366f, type: 3}
   scriptVersion: 2
   compiledVersion: 2
   behaviourSyncMode: 0
   hasInteractEvent: 0
-  scriptID: 7313085519096743583
+  scriptID: -7425108255541835019
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
