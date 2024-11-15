@@ -125,15 +125,16 @@ public class RinaNumpy : UdonSharpBehaviour
     }
     
     //
-    public static float Mean_FloatArray(float[] x) 
+        public static float Mean_FloatArray(float[] x) 
     {
-        float sum = 0; // 全要素の合計値を保持する変数
-        foreach (float value in x) 
+        float sum = 0;
+        for (int i = 0; i < x.Length; i++) 
         {
-            sum += value; // 配列xの各要素を合計に加える
+            sum += x[i];
         }
-        return sum / x.Length; // 合計を要素数で割って平均値を求める
+        return sum / x.Length;
     }
+
     
 
     
@@ -175,12 +176,13 @@ public class RinaNumpy : UdonSharpBehaviour
     public float Var_FloatArray(float[] x, float mean)
     {
         float sumOfSquares = 0f;
-        foreach (float value in x)
+        for (int i = 0; i < x.Length; i++) 
         {
-            sumOfSquares += Mathf.Pow(value - mean, 2);
+            sumOfSquares += Mathf.Pow(x[i] - mean, 2);
         }
         return sumOfSquares / x.Length;
     }
+
     
     /// <summary>
     /// 整数を指定したビット数の2進数文字列に変換します。
@@ -229,13 +231,14 @@ public class RinaNumpy : UdonSharpBehaviour
     }
 
     public static float Std_FloatArray(float[] x) {
-        float mean = Mean_FloatArray(x); // 平均値を計算
+        float mean = Mean_FloatArray(x);
         float sumOfSquares = 0f;
         for (int i = 0; i < x.Length; i++) {
             sumOfSquares += Mathf.Pow(x[i] - mean, 2);
         }
-        return Mathf.Sqrt(sumOfSquares / x.Length); // 偏差平方和の平均の平方根を返す
+        return Mathf.Sqrt(sumOfSquares / x.Length);
     }
+
 
 
     // 配列を文字列に変換するメソッド
