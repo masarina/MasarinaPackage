@@ -34,15 +34,18 @@ public class RinaNumpy : UdonSharpBehaviour
         return result;
     }
     
-    //
     public static float[] Multiply_FloatArray_FloatArray(float[] x, float[] y) {
-        if (x.Length != y.Length) throw new System.ArgumentException("Arrays must be of equal length.");
+        if (x.Length != y.Length) {
+            Debug.LogError("Arrays must be of equal length.");
+            return new float[0]; // 空の配列を返すことで処理を安全に終了
+        }
         float[] result = new float[x.Length];
         for (int i = 0; i < x.Length; i++) {
             result[i] = x[i] * y[i];
         }
         return result;
     }
+
     
     //
     public static float[] Multiply_FloatArray_Float(float[] x, float y) {
@@ -138,17 +141,15 @@ public class RinaNumpy : UdonSharpBehaviour
         return sum / x.Length; // 合計を要素数で割って平均を求める
     }
     
-    public static float Std_FloatArray(float[] x)
-    {
-        float mean = Mean(x); // まず配列xの平均値を計算
-        float sumOfSquares = 0f; // 差の二乗の合計を初期化
-        foreach (float value in x)
-        {
-            sumOfSquares += Mathf.Pow(value - mean, 2); // 各値と平均との差の二乗を加算
-        }
-        float variance = sumOfSquares / x.Length; // 分散は差の二乗の合計を要素数で割ったもの
-        return Mathf.Sqrt(variance); // 分散の平方根が標準偏差
+public static float Std_FloatArray(float[] x) {
+    float mean = Mean_FloatArray(x); // 平均値の計算
+    float sumOfSquares = 0f;
+    for (int i = 0; i < x.Length; i++) {
+        sumOfSquares += Mathf.Pow(x[i] - mean, 2); // 各要素から平均を引いて、二乗
     }
+    return Mathf.Sqrt(sumOfSquares / x.Length); // その平均の平方根を取る
+}
+
     
     public static float[] Power_FloatArray_Float(float[] x, float y) {
         float[] result = new float[x.Length];
@@ -208,15 +209,6 @@ public class RinaNumpy : UdonSharpBehaviour
             sumOfSquares += Mathf.Pow(value - mean, 2);
         }
         return sumOfSquares / x.Length;
-    }
-    
-    public static float Std_FloatArray(float[] x) {
-        float mean = Mean_FloatArray(x); // 平均値の計算
-        float sumOfSquares = 0f;
-        for (int i = 0; i < x.Length; i++) {
-            sumOfSquares += Mathf.Pow(x[i] - mean, 2); // 各要素から平均を引いて、二乗
-        }
-        return Mathf.Sqrt(sumOfSquares / x.Length); // その平均の平方根を取る
     }
     
     /// <summary>
