@@ -1,4 +1,4 @@
-/// version_0.0.0
+
 /// this file made by Masarina
 /// meamメソッドはMean_FloatArrayに名前を変更しました(2024-11-15)
 using UdonSharp;
