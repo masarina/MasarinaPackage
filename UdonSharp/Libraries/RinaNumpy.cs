@@ -244,16 +244,20 @@ public class RinaNumpy : UdonSharpBehaviour
     // 配列を文字列に変換するメソッド
     private string IntArrayToString(int[] array)
     {
-        string result = "[";  // 開始のブラケット
-        for (int i = 0; i < array.Length; i++)
+        // 配列を文字列に変換
+        int[] tempArray = new int[array.Length]; // コピー用の一時配列
+        this.CopyIntArray(array, tempArray, array.Length); // 配列をコピー
+        string result = "";
+
+        for (int i = 0; i < tempArray.Length; i++)
         {
-            result += array[i].ToString();  // 配列の値を文字列に変換して追加
-            if (i < array.Length - 1)
+            result += tempArray[i].ToString(); // 各要素を文字列化して結合
+            if (i < tempArray.Length - 1)
             {
-                result += ", ";  // 各値の間にカンマとスペースを追加
+                result += ", "; // 区切り文字を追加
             }
         }
-        result += "]";  // 終了のブラケット
+
         return result;
     }
             
