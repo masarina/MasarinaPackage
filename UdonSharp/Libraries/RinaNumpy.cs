@@ -1,5 +1,5 @@
 
-/// this file made by Masarina
+/// this file made by Masarina(Twitter:@Masarina002)
 /// meamメソッドはMean_FloatArrayに名前を変更しました(2024-11-15)
 using UdonSharp;
 using UnityEngine;
