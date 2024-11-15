@@ -141,14 +141,14 @@ public class RinaNumpy : UdonSharpBehaviour
         return sum / x.Length; // 合計を要素数で割って平均を求める
     }
     
-public static float Std_FloatArray(float[] x) {
-    float mean = Mean_FloatArray(x); // 平均値の計算
-    float sumOfSquares = 0f;
-    for (int i = 0; i < x.Length; i++) {
-        sumOfSquares += Mathf.Pow(x[i] - mean, 2); // 各要素から平均を引いて、二乗
+    public static float Std_FloatArray(float[] x) {
+        float mean = Mean_FloatArray(x); // 平均値の計算
+        float sumOfSquares = 0f;
+        for (int i = 0; i < x.Length; i++) {
+            sumOfSquares += Mathf.Pow(x[i] - mean, 2); // 各要素から平均を引いて、二乗
+        }
+        return Mathf.Sqrt(sumOfSquares / x.Length); // その平均の平方根を取る
     }
-    return Mathf.Sqrt(sumOfSquares / x.Length); // その平均の平方根を取る
-}
 
     
     public static float[] Power_FloatArray_Float(float[] x, float y) {
