@@ -1,6 +1,6 @@
 /// version_0.0.0
 /// this file made by Masarina
-
+/// meamメソッドはMean_FloatArrayに名前を変更しました(2024-11-15)
 using UdonSharp;
 using UnityEngine;
 
@@ -130,16 +130,7 @@ public class RinaNumpy : UdonSharpBehaviour
         return sum / x.Length; // 合計を要素数で割って平均値を求める
     }
     
-    //
-    public static float Mean(float[] x)
-    {
-        float sum = 0f;
-        foreach (float value in x)
-        {
-            sum += value; // 配列の各要素を合計
-        }
-        return sum / x.Length; // 合計を要素数で割って平均を求める
-    }
+
     
     public static float Std_FloatArray(float[] x) {
         float mean = Mean_FloatArray(x); // 平均値の計算
@@ -149,7 +140,6 @@ public class RinaNumpy : UdonSharpBehaviour
         }
         return Mathf.Sqrt(sumOfSquares / x.Length); // その平均の平方根を取る
     }
-
 
     
     public static float[] Power_FloatArray_Float(float[] x, float y) {
