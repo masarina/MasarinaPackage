@@ -136,16 +136,6 @@ public class RinaNumpy : UdonSharpBehaviour
     
 
     
-    public static float Std_FloatArray(float[] x) {
-        float mean = Mean_FloatArray(x); // 平均値の計算
-        float sumOfSquares = 0f;
-        foreach (float value in x) {
-            sumOfSquares += Mathf.Pow(value - mean, 2); // 各要素から平均を引いて、二乗
-        }
-        return Mathf.Sqrt(sumOfSquares / x.Length); // その平均の平方根を取る
-    }
-
-    
     public static float[] Power_FloatArray_Float(float[] x, float y) {
         float[] result = new float[x.Length];
         for (int i = 0; i < x.Length; i++) {
@@ -236,6 +226,16 @@ public class RinaNumpy : UdonSharpBehaviour
         }
         return result;
     }
+
+    public static float Std_FloatArray(float[] x) {
+        float mean = Mean_FloatArray(x); // 平均値を計算
+        float sumOfSquares = 0f;
+        foreach (float value in x) {
+            sumOfSquares += Mathf.Pow(value - mean, 2); // 各要素の偏差を2乗して加算
+        }
+        return Mathf.Sqrt(sumOfSquares / x.Length); // 偏差平方和の平均の平方根を返す
+    }
+
 
     // 配列を文字列に変換するメソッド
     private string IntArrayToString(int[] array)
