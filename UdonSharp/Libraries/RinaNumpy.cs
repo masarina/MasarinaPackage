@@ -58,13 +58,17 @@ public class RinaNumpy : UdonSharpBehaviour
     
     //
     public static float[] Add_FloatArray_FloatArray(float[] x, float[] y) {
-        if (x.Length != y.Length) throw new System.ArgumentException("Arrays must be of equal length.");
+        if (x.Length != y.Length) {
+            Debug.LogError("Arrays must be of equal length.");
+            return new float[0]; // 空の配列を返す
+        }
         float[] result = new float[x.Length];
         for (int i = 0; i < x.Length; i++) {
             result[i] = x[i] + y[i];
         }
         return result;
     }
+
     
     //
     public static float[] OnesLike_FloatArray(float[] x) {
@@ -91,28 +95,28 @@ public class RinaNumpy : UdonSharpBehaviour
     }
     
     //
-    public static float DotProduct_FloatArray_FloatArray(float[] x, float[] y)
-    {
-        if (x.Length != y.Length) throw new System.ArgumentException("Arrays must be of equal length for dot product.");
-        
+    public static float DotProduct_FloatArray_FloatArray(float[] x, float[] y) {
+        if (x.Length != y.Length) {
+            Debug.LogError("Arrays must be of equal length for dot product.");
+            return 0; // エラー時は0を返す
+        }
         float result = 0;
-        for (int i = 0; i < x.Length; i++)
-        {
+        for (int i = 0; i < x.Length; i++) {
             result += x[i] * y[i];
         }
         return result;
     }
 
     //
-    public static float[] DotProduct_FloatArray2D_FloatArray(float[][] A, float[] x)
-    {
-        if (A[0].Length != x.Length) throw new System.ArgumentException("Matrix columns and vector size must match for dot product.");
-
+    public static float[] DotProduct_FloatArray2D_FloatArray(float[][] A, float[] x) {
+        if (A.Length == 0 || A[0].Length != x.Length) {
+            Debug.LogError("Matrix columns and vector size must match for dot product.");
+            return new float[0];
+        }
+    
         float[] result = new float[A.Length];
-        for (int i = 0; i < A.Length; i++)
-        {
-            for (int j = 0; j < x.Length; j++)
-            {
+        for (int i = 0; i < A.Length; i++) {
+            for (int j = 0; j < x.Length; j++) {
                 result[i] += A[i][j] * x[j];
             }
         }
