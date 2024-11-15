@@ -264,5 +264,21 @@ public class RinaNumpy : UdonSharpBehaviour
         }
         return result;
     }
+
+    // 配列を文字列に変換するメソッド
+    private string IntArrayToString(int[] array)
+    {
+        string result = "[";  // 開始のブラケット
+        for (int i = 0; i < array.Length; i++)
+        {
+            result += array[i].ToString();  // 配列の値を文字列に変換して追加
+            if (i < array.Length - 1)
+            {
+                result += ", ";  // 各値の間にカンマとスペースを追加
+            }
+        }
+        result += "]";  // 終了のブラケット
+        return result;
+    }
             
 }
