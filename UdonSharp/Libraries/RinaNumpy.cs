@@ -10,8 +10,8 @@ public class RinaNumpy : UdonSharpBehaviour
     //
     public static float Sum_FloatArray(float[] x) {
         float sum = 0;
-        foreach (float value in x) {
-            sum += value;
+        for (int i = 0; i < x.Length; i++) {
+            sum += x[i];
         }
         return sum;
     }
@@ -231,8 +231,8 @@ public class RinaNumpy : UdonSharpBehaviour
     public static float Std_FloatArray(float[] x) {
         float mean = Mean_FloatArray(x); // 平均値を計算
         float sumOfSquares = 0f;
-        foreach (float value in x) {
-            sumOfSquares += Mathf.Pow(value - mean, 2); // 各要素の偏差を2乗して加算
+        for (int i = 0; i < x.Length; i++) {
+            sumOfSquares += Mathf.Pow(x[i] - mean, 2);
         }
         return Mathf.Sqrt(sumOfSquares / x.Length); // 偏差平方和の平均の平方根を返す
     }
