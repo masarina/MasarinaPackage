@@ -144,11 +144,12 @@ public class RinaNumpy : UdonSharpBehaviour
     public static float Std_FloatArray(float[] x) {
         float mean = Mean_FloatArray(x); // 平均値の計算
         float sumOfSquares = 0f;
-        for (int i = 0; i < x.Length; i++) {
-            sumOfSquares += Mathf.Pow(x[i] - mean, 2); // 各要素から平均を引いて、二乗
+        foreach (float value in x) {
+            sumOfSquares += Mathf.Pow(value - mean, 2); // 各要素から平均を引いて、二乗
         }
         return Mathf.Sqrt(sumOfSquares / x.Length); // その平均の平方根を取る
     }
+
 
     
     public static float[] Power_FloatArray_Float(float[] x, float y) {
@@ -180,21 +181,6 @@ public class RinaNumpy : UdonSharpBehaviour
             for (int j = 0; j < x[i].Length; j++)
             {
                 sum[i] += x[i][j];
-            }
-        }
-        return sum;
-    }
-    
-    public static float[] Sum_FloatArray2d_Float_axis0(float[][] x)
-    {
-        if (x.Length == 0 || x[0].Length == 0) return new float[0]; // 空の配列の場合は空の配列を返す
-    
-        float[] sum = new float[x[0].Length]; // 列の数だけ要素を持つ配列を初期化
-        for (int i = 0; i < x.Length; i++) // 行のループ
-        {
-            for (int j = 0; j < x[i].Length; j++) // 列のループ
-            {
-                sum[j] += x[i][j]; // 各列の要素を足し合わせる
             }
         }
         return sum;
