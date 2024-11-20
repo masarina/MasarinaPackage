@@ -260,5 +260,48 @@ public class RinaNumpy : UdonSharpBehaviour
 
         return result;
     }
+
+    public static string IntToStr(int value) {
+        string result = "";
+        bool isNegative = value < 0;
+    
+        if (isNegative) {
+            value = -value; // 負の値を扱うため正の値に変換
+        }
+    
+        do {
+            int digit = value % 10; // 1桁ずつ取り出す
+            result = (char)('0' + digit) + result; // 文字に変換して前に追加
+            value /= 10;
+        } while (value > 0);
+    
+        if (isNegative) {
+            result = "-" + result; // 元が負ならマイナス符号を追加
+        }
+    
+        return result;
+    }
+
+    public static int StrToInt(string value) {
+        int result = 0;
+        bool isNegative = false;
+        int startIndex = 0;
+    
+        if (value.Length > 0 && value[0] == '-') {
+            isNegative = true;
+            startIndex = 1; // マイナス符号がある場合は1文字目から処理を始める
+        }
+    
+        for (int i = startIndex; i < value.Length; i++) {
+            char c = value[i];
+            if (c < '0' || c > '9') {
+                Debug.LogError($"Invalid character '{c}' in input string: {value}");
+                return 0; // 無効な文字が含まれている場合は0を返す
+            }
+            result = result * 10 + (c - '0'); // 数値として計算
+        }
+    
+        return isNegative ? -result : result; // 符号を適用して返す
+    }
             
 }
