@@ -303,5 +303,26 @@ public class RinaNumpy : UdonSharpBehaviour
     
         return isNegative ? -result : result; // 符号を適用して返す
     }
+
+    public static float[][] CreateArray2d(int[] shape)
+    {
+        if (shape.Length != 2)
+        {
+            Debug.LogError("Shape must be a 2-element array [rows, columns].");
+            return new float[0][]; // 空の配列を返す
+        }
+    
+        int rows = shape[0];
+        int columns = shape[1];
+    
+        // ジャグ配列を初期化
+        float[][] jaggedArray = new float[rows][];
+        for (int i = 0; i < rows; i++)
+        {
+            jaggedArray[i] = new float[columns];
+        }
+    
+        return jaggedArray;
+    }
             
 }
