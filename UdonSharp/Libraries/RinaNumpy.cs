@@ -350,5 +350,36 @@ public class RinaNumpy : UdonSharpBehaviour
     
         return array3d;
     }
+
+    public static float[][][][] CreateArray4d(int[] shape)
+    {
+        if (shape.Length != 4)
+        {
+            Debug.LogError("Shape must be a 4-element array [depth, height, rows, columns].");
+            return new float[0][][][]; // 空の配列を返す
+        }
+    
+        int depth = shape[0];
+        int height = shape[1];
+        int rows = shape[2];
+        int columns = shape[3];
+    
+        // 4次元配列を初期化
+        float[][][][] array4d = new float[depth][][][];
+        for (int d = 0; d < depth; d++)
+        {
+            array4d[d] = new float[height][][];
+            for (int h = 0; h < height; h++)
+            {
+                array4d[d][h] = new float[rows][];
+                for (int r = 0; r < rows; r++)
+                {
+                    array4d[d][h][r] = new float[columns];
+                }
+            }
+        }
+    
+        return array4d;
+    }
             
 }
