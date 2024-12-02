@@ -324,5 +324,31 @@ public class RinaNumpy : UdonSharpBehaviour
     
         return jaggedArray;
     }
+
+    public static float[][][] CreateArray3d(int[] shape)
+    {
+        if (shape.Length != 3)
+        {
+            Debug.LogError("Shape must be a 3-element array [depth, rows, columns].");
+            return new float[0][][]; // 空の配列を返す
+        }
+    
+        int depth = shape[0];
+        int rows = shape[1];
+        int columns = shape[2];
+    
+        // 3次元配列を初期化
+        float[][][] array3d = new float[depth][][];
+        for (int d = 0; d < depth; d++)
+        {
+            array3d[d] = new float[rows][];
+            for (int r = 0; r < rows; r++)
+            {
+                array3d[d][r] = new float[columns];
+            }
+        }
+    
+        return array3d;
+    }
             
 }
