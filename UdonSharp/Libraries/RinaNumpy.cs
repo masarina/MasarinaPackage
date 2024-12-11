@@ -416,6 +416,25 @@ public class RinaNumpy : UdonSharpBehaviour
         return result;
     }
 
+    public static float[][] AppendRow_FloatArray2D(float[][] matrix, float[] newRow)
+    {
+        // 元の行列の行数を取得
+        int originalRows = matrix.Length;
+    
+        // 新しい行列を作成(行数を1つ増やす)
+        float[][] newMatrix = new float[originalRows + 1][];
+    
+        // 元の行列を新しい行列にコピー
+        for (int i = 0; i < originalRows; i++)
+        {
+            newMatrix[i] = matrix[i];
+        }
+    
+        // 新しい行を最後に追加
+        newMatrix[originalRows] = newRow;
+    
+        return newMatrix;
+    }
 
             
 }
