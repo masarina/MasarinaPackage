@@ -381,5 +381,41 @@ public class RinaNumpy : UdonSharpBehaviour
     
         return array4d;
     }
+
+    public static float[] Append_FloatArray(float[] array, float value)
+    {
+        // 新しいサイズの配列を作成
+        float[] result = new float[array.Length + 1];
+    
+        // 元の配列をコピー
+        for (int i = 0; i < array.Length; i++)
+        {
+            result[i] = array[i];
+        }
+    
+        // 新しい値を最後に追加
+        result[array.Length] = value;
+    
+        return result;
+    }
+
+    public static string[] Append_StringArray(string[] array, string value)
+    {
+        // 新しいサイズの配列を作成
+        string[] result = new string[array.Length + 1];
+    
+        // 元の配列をコピー
+        for (int i = 0; i < array.Length; i++)
+        {
+            result[i] = array[i];
+        }
+    
+        // 新しい値を最後に追加
+        result[array.Length] = value;
+    
+        return result;
+    }
+
+
             
 }
