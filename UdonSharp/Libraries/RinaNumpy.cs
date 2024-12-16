@@ -399,7 +399,7 @@ public class RinaNumpy : UdonSharpBehaviour
         return result;
     }
 
-    public static float[] Append_IntArray(int[] array, int value)
+    public static int[] Append_IntArray(int[] array, int value)
     {
         // 新しいサイズの配列を作成
         int[] result = new int[array.Length + 1];
