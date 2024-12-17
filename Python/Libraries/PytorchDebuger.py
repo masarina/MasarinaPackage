@@ -40,7 +40,7 @@ class PytorchDebuger:
                 print(f"レイヤー名: {layer_name}, Shape: {shape}")
 
     @staticmethod
-    def compare_optimizers(prev_optimizer, current_optimizer):
+    def compare_optimizer_optimizer_shapes(prev_optimizer, current_optimizer):
         """
         前回のOptimizerと今回のOptimizerのパラメータを比較し、不一致がある場合に表示するメソッド。
 
