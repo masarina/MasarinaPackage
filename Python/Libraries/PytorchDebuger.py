@@ -5,7 +5,7 @@ class PytorchDebuger:
     def __init__(self):
         pass
         
-    def compare_model_optimizer_shapes(model, optimizer):
+    def compare_model_optimizer_shapes(self, model, optimizer):
         """
         モデルの各レイヤーの重み、バイアス、ベータ値のshapeをOptimizerのパラメータと比較し、
         不一致のレイヤーの名前とshapeを表示する関数。
