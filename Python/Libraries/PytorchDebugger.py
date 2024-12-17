@@ -1,7 +1,7 @@
 import torch
 from torch import nn, optim
 
-class PytorchDebuger:
+class PytorchDebugger:
     def __init__(self):
         pass
 
