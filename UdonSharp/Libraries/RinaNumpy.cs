@@ -521,5 +521,42 @@ public class RinaNumpy : UdonSharpBehaviour
     
         return result;
     }
+
+    public static float[][] Reshape_FloatArray_To_FloatArray2D(float[] flatArray, int columns)
+    {
+        // 入力チェック
+        if (flatArray == null || columns <= 0)
+        {
+            Debug.LogError("Input array is null or columns is invalid.");
+            return null;
+        }
+    
+        int totalElements = flatArray.Length;
+    
+        // 行数を計算
+        int rows = totalElements / columns;
+        if (totalElements % columns != 0)
+        {
+            Debug.LogError("Array length is not divisible by the number of columns.");
+            return null;
+        }
+    
+        // 結果となる2次元配列を初期化
+        float[][] result = new float[rows][];
+        for (int i = 0; i < rows; i++)
+        {
+            result[i] = new float[columns];
+        }
+    
+        // データを2次元配列にコピー
+        for (int i = 0; i < totalElements; i++)
+        {
+            int row = i / columns;
+            int column = i % columns;
+            result[row][column] = flatArray[i];
+        }
+    
+        return result;
+    }
             
 }
