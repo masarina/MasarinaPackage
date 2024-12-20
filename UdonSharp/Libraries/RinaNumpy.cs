@@ -494,6 +494,32 @@ public class RinaNumpy : UdonSharpBehaviour
         return result;
     }
 
-
+    public static float[] AddFloatArrayFloatArray(float[] array1, float[] array2)
+    {
+        // 配列がnullの場合のチェック
+        if (array1 == null || array2 == null)
+        {
+            Debug.LogError("One or both of the input arrays are null.");
+            return null;
+        }
+    
+        // 配列の長さが一致するかチェック
+        if (array1.Length != array2.Length)
+        {
+            Debug.LogError("Arrays must have the same length.");
+            return null;
+        }
+    
+        // 結果を格納する新しい配列
+        float[] result = new float[array1.Length];
+    
+        // 各要素を加算
+        for (int i = 0; i < array1.Length; i++)
+        {
+            result[i] = array1[i] + array2[i];
+        }
+    
+        return result;
+    }
             
 }
