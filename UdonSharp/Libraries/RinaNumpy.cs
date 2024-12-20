@@ -454,7 +454,7 @@ public class RinaNumpy : UdonSharpBehaviour
     }
 
     // 1次元ジャグ配列を加算するメソッド
-    public float[][] AddArray2dArray2d(float[][] array1, float[][] array2)
+    public float[][] AddFloatArray2dFloatArray2d(float[][] array1, float[][] array2)
     {
         // 配列がnullの場合のチェック
         if (array1 == null || array2 == null)
