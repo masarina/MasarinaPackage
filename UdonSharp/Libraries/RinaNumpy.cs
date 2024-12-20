@@ -453,5 +453,47 @@ public class RinaNumpy : UdonSharpBehaviour
         return newMatrix;
     }
 
+    // 1次元ジャグ配列を加算するメソッド
+    public float[][] AddArray2dArray2d(float[][] array1, float[][] array2)
+    {
+        // 配列がnullの場合のチェック
+        if (array1 == null || array2 == null)
+        {
+            Debug.LogError("One or both of the input arrays are null.");
+            return null;
+        }
+
+        // 配列の長さが一致するかチェック
+        if (array1.Length != array2.Length)
+        {
+            Debug.LogError("Arrays must have the same number of elements.");
+            return null;
+        }
+
+        // 結果を格納する新しい配列
+        float[][] result = new float[array1.Length][];
+
+        // 各要素を加算
+        for (int i = 0; i < array1.Length; i++)
+        {
+            // 内部配列の長さが一致するかチェック
+            if (array1[i].Length != array2[i].Length)
+            {
+                Debug.LogError($"Sub-array lengths do not match at index {i}.");
+                return null;
+            }
+
+            // 各要素を加算
+            result[i] = new float[array1[i].Length];
+            for (int j = 0; j < array1[i].Length; j++)
+            {
+                result[i][j] = array1[i][j] + array2[i][j];
+            }
+        }
+
+        return result;
+    }
+
+
             
 }
